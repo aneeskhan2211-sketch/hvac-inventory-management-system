@@ -1,0 +1,588 @@
+// Version: 3.0.0
+type ActivityLog__19743674 =
+  {
+    action : Text;
+    details : ?Text;
+    entityId : Nat;
+    entityType : Text;
+    id : Nat;
+    timestamp : Int;
+    userId : Principal
+  };
+type ActivityLog__439802922 =
+  {
+    action : Text;
+    details : ?Text;
+    entityId : Nat;
+    entityType : Text;
+    id : Nat;
+    timestamp : Int;
+    userId : Principal
+  };
+type ApprovalStatus__1030066916 = {#approved; #pending; #rejected};
+type ApprovalStatus__641045796 = {#approved; #pending; #rejected};
+type CustomerEquipment__591613477 =
+  {
+    brand : Text;
+    customerId : Nat;
+    equipmentType : Text;
+    id : Nat;
+    installDate : ?Int;
+    location : Text;
+    model : Text;
+    purchaseDate : ?Int;
+    serialNumber : Text;
+    warrantyExpiry : ?Int
+  };
+type CustomerEquipment__795553484 =
+  {
+    brand : Text;
+    customerId : Nat;
+    equipmentType : Text;
+    id : Nat;
+    installDate : ?Int;
+    location : Text;
+    model : Text;
+    purchaseDate : ?Int;
+    serialNumber : Text;
+    warrantyExpiry : ?Int
+  };
+type Customer__263943254 =
+  {
+    address : Text;
+    city : Text;
+    email : Text;
+    equipmentList : [Nat];
+    id : Nat;
+    name : Text;
+    notes : ?Text;
+    phone : Text;
+    serviceHistory : [Nat];
+    state : Text;
+    zip : Text
+  };
+type Customer__907476791 =
+  {
+    address : Text;
+    city : Text;
+    email : Text;
+    equipmentList : [Nat];
+    id : Nat;
+    name : Text;
+    notes : ?Text;
+    phone : Text;
+    serviceHistory : [Nat];
+    state : Text;
+    zip : Text
+  };
+type Data__80296667<K, V> =
+  {var count : Nat__1040412405; kvs : [var ?(K, V)]};
+type GasketInfo__328917302 =
+  {
+    cooler : Text;
+    freezer : Text;
+    fryFreezer : Text;
+    glassFreezer : Text;
+    grillBox : Text;
+    insideDress : Text;
+    locationId : Nat;
+    outsideDressTable : Text
+  };
+type GasketInfo__472137001 =
+  {
+    cooler : Text;
+    freezer : Text;
+    fryFreezer : Text;
+    glassFreezer : Text;
+    grillBox : Text;
+    insideDress : Text;
+    locationId : Nat;
+    outsideDressTable : Text
+  };
+type Internal__41346355<K, V> =
+  {children : [var ?Node__1000929467<K, V>]; data : Data__80296667<K, V>};
+type Item__751671943 =
+  {
+    barcode : ?Text;
+    category : Text;
+    cost : Float;
+    customFields : [(Text, Text)];
+    description : Text;
+    id : Nat;
+    isActive : Bool;
+    maxStock : Nat;
+    name : Text;
+    qrCode : ?Text;
+    reorderPoint : Nat;
+    sellPrice : Float;
+    sku : Text;
+    subcategory : Text;
+    supplierIds : [Nat];
+    unit : Text;
+    unitOfMeasure : Text;
+    variantOf : ?Nat
+  };
+type Item__925164080 =
+  {
+    barcode : ?Text;
+    category : Text;
+    cost : Float;
+    customFields : [(Text, Text)];
+    description : Text;
+    id : Nat;
+    isActive : Bool;
+    maxStock : Nat;
+    name : Text;
+    qrCode : ?Text;
+    reorderPoint : Nat;
+    sellPrice : Float;
+    sku : Text;
+    subcategory : Text;
+    supplierIds : [Nat];
+    unit : Text;
+    unitOfMeasure : Text;
+    variantOf : ?Nat
+  };
+type Leaf__712614010<K, V> = {data : Data__80296667<K, V>};
+type Location__31265466 =
+  {
+    active : Bool;
+    address : ?Text;
+    beltRequirements : [(Text, Nat)];
+    completed : Bool;
+    filterRequirements : [(Text, Nat)];
+    id : Nat;
+    isActive : Bool;
+    locationType : {#JobSite; #SecondaryStorage; #ServiceTruck; #Warehouse};
+    managerId : ?Nat;
+    name : Text;
+    zones : [Text]
+  };
+type Location__653099815 =
+  {
+    active : Bool;
+    address : ?Text;
+    beltRequirements : [(Text, Nat)];
+    completed : Bool;
+    filterRequirements : [(Text, Nat)];
+    id : Nat;
+    isActive : Bool;
+    locationType : {#JobSite; #SecondaryStorage; #ServiceTruck; #Warehouse};
+    managerId : ?Nat;
+    name : Text;
+    zones : [Text]
+  };
+type MaintenanceRecord__1071929309 =
+  {
+    completedDate : ?Int;
+    cost : Float;
+    equipmentId : Nat;
+    equipmentType : Text;
+    id : Nat;
+    notes : ?Text;
+    partsUsed : [WorkOrderPart__944618857];
+    scheduledDate : Int;
+    status : {#Cancelled; #Completed; #InProgress; #Overdue; #Scheduled};
+    technicianId : Nat;
+    workPerformed : Text
+  };
+type MaintenanceRecord__379710549 =
+  {
+    completedDate : ?Int;
+    cost : Float;
+    equipmentId : Nat;
+    equipmentType : Text;
+    id : Nat;
+    notes : ?Text;
+    partsUsed : [WorkOrderPart__959732814];
+    scheduledDate : Int;
+    status : {#Cancelled; #Completed; #InProgress; #Overdue; #Scheduled};
+    technicianId : Nat;
+    workPerformed : Text
+  };
+type Map__222667396<K, V> = Map__912772452<K, V>;
+type Map__709709801<K, V> =
+  {var root : Node__1000929467<K, V>; var size : Nat__1040412405};
+type Map__912772452<K, V> = Map__709709801<K, V>;
+type MultiUserState__784036298 =
+  {
+    var adminAssigned : Bool;
+    approvalStatus : Map__222667396<Principal, ApprovalStatus__641045796>;
+    userRoles : Map__222667396<Principal, UserRole__717262347>
+  };
+type Nat__1040412405 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__1000929467<K, V> =
+  {#internal : Internal__41346355<K, V>; #leaf : Leaf__712614010<K, V>};
+type PurchaseOrderItem__270083663 =
+  {
+    itemId : Nat;
+    notes : ?Text;
+    quantity : Nat;
+    receivedQuantity : Nat;
+    unitCost : Float
+  };
+type PurchaseOrderItem__294215993 =
+  {
+    itemId : Nat;
+    notes : ?Text;
+    quantity : Nat;
+    receivedQuantity : Nat;
+    unitCost : Float
+  };
+type PurchaseOrder__375015127 =
+  {
+    createdDate : Int;
+    expectedDate : ?Int;
+    id : Nat;
+    items : [PurchaseOrderItem__270083663];
+    notes : ?Text;
+    receivedDate : ?Int;
+    status :
+      {#Acknowledged; #Closed; #Draft; #PartiallyReceived; #Received; #Sent};
+    supplierId : Nat;
+    totalCost : Float
+  };
+type PurchaseOrder__625462676 =
+  {
+    createdDate : Int;
+    expectedDate : ?Int;
+    id : Nat;
+    items : [PurchaseOrderItem__294215993];
+    notes : ?Text;
+    receivedDate : ?Int;
+    status :
+      {#Acknowledged; #Closed; #Draft; #PartiallyReceived; #Received; #Sent};
+    supplierId : Nat;
+    totalCost : Float
+  };
+type ReorderAlert__123161961 =
+  {
+    createdDate : Int;
+    currentStock : Nat;
+    id : Nat;
+    itemId : Nat;
+    locationId : Nat;
+    reorderPoint : Nat;
+    status : {#Acknowledged; #Active; #Ordered; #Resolved};
+    suggestedQuantity : Nat
+  };
+type ReorderAlert__383694723 =
+  {
+    createdDate : Int;
+    currentStock : Nat;
+    id : Nat;
+    itemId : Nat;
+    locationId : Nat;
+    reorderPoint : Nat;
+    status : {#Acknowledged; #Active; #Ordered; #Resolved};
+    suggestedQuantity : Nat
+  };
+type ServiceKitPart__119190209 = {partId : Nat; quantity : Nat};
+type ServiceKitPart__17575841 = {partId : Nat; quantity : Nat};
+type ServiceKit__404755546 =
+  {
+    category : Text;
+    description : Text;
+    estimatedLaborHours : Float;
+    id : Nat;
+    name : Text;
+    parts : [ServiceKitPart__17575841];
+    totalCost : Float
+  };
+type ServiceKit__7545242 =
+  {
+    category : Text;
+    description : Text;
+    estimatedLaborHours : Float;
+    id : Nat;
+    name : Text;
+    parts : [ServiceKitPart__119190209];
+    totalCost : Float
+  };
+type StockLevel__1013768411 =
+  {
+    beginningInventory : ?Nat;
+    bin : ?Text;
+    currentStock : ?Nat;
+    itemId : Nat;
+    lastUpdated : Int;
+    locationId : Nat;
+    quantity : Nat;
+    receive1 : ?Nat;
+    receive2 : ?Nat;
+    receive3 : ?Nat;
+    zone : ?Text
+  };
+type StockLevel__687884146 =
+  {
+    beginningInventory : ?Nat;
+    bin : ?Text;
+    currentStock : ?Nat;
+    itemId : Nat;
+    lastUpdated : Int;
+    locationId : Nat;
+    quantity : Nat;
+    receive1 : ?Nat;
+    receive2 : ?Nat;
+    receive3 : ?Nat;
+    zone : ?Text
+  };
+type Supplier__446164726 =
+  {
+    address : Text;
+    contactName : Text;
+    email : Text;
+    id : Nat;
+    isActive : Bool;
+    leadTimeDays : Nat;
+    name : Text;
+    paymentTerms : Text;
+    phone : Text;
+    rating : Float;
+    website : ?Text
+  };
+type Supplier__62548867 =
+  {
+    address : Text;
+    contactName : Text;
+    email : Text;
+    id : Nat;
+    isActive : Bool;
+    leadTimeDays : Nat;
+    name : Text;
+    paymentTerms : Text;
+    phone : Text;
+    rating : Float;
+    website : ?Text
+  };
+type Technician__500247538 =
+  {
+    assignedTruckId : ?Nat;
+    email : Text;
+    id : Nat;
+    isActive : Bool;
+    name : Text;
+    phone : Text;
+    role : Text;
+    skills : [Text]
+  };
+type Technician__559818750 =
+  {
+    assignedTruckId : ?Nat;
+    email : Text;
+    id : Nat;
+    isActive : Bool;
+    name : Text;
+    phone : Text;
+    role : Text;
+    skills : [Text]
+  };
+type Transaction__381777412 =
+  {
+    fromLocationId : ?Nat;
+    id : Nat;
+    itemId : Nat;
+    notes : ?Text;
+    quantity : Nat;
+    reason : Text;
+    relatedOrderId : ?Nat;
+    timestamp : Int;
+    toLocationId : ?Nat;
+    transactionType :
+      {#Adjustment; #Damaged; #Issued; #Loss; #Receipt; #Returned; #Transfer};
+    userId : Principal
+  };
+type Transaction__865268250 =
+  {
+    fromLocationId : ?Nat;
+    id : Nat;
+    itemId : Nat;
+    notes : ?Text;
+    quantity : Nat;
+    reason : Text;
+    relatedOrderId : ?Nat;
+    timestamp : Int;
+    toLocationId : ?Nat;
+    transactionType :
+      {#Adjustment; #Damaged; #Issued; #Loss; #Receipt; #Returned; #Transfer};
+    userId : Principal
+  };
+type UserProfile__315128327 = {name : Text};
+type UserProfile__491224006 = {name : Text};
+type UserRole__465239019 = {#admin; #guest; #user};
+type UserRole__717262347 = {#admin; #guest; #user};
+type WorkOrderPart__944618857 =
+  {partId : Nat; quantity : Nat; totalCost : Float; unitCost : Float};
+type WorkOrderPart__959732814 =
+  {partId : Nat; quantity : Nat; totalCost : Float; unitCost : Float};
+type WorkOrder__288220227 =
+  {
+    assignedParts : [WorkOrderPart__959732814];
+    completedDate : ?Int;
+    customerId : Nat;
+    description : Text;
+    id : Nat;
+    laborHours : Float;
+    locationId : Nat;
+    notes : ?Text;
+    priority : {#Emergency; #High; #Low; #Medium};
+    scheduledDate : Int;
+    status : {#Cancelled; #Completed; #InProgress; #Invoiced; #Scheduled};
+    technicianId : Nat;
+    title : Text;
+    totalCost : Float
+  };
+type WorkOrder__638090170 =
+  {
+    assignedParts : [WorkOrderPart__944618857];
+    completedDate : ?Int;
+    customerId : Nat;
+    description : Text;
+    id : Nat;
+    laborHours : Float;
+    locationId : Nat;
+    notes : ?Text;
+    priority : {#Emergency; #High; #Low; #Medium};
+    scheduledDate : Int;
+    status : {#Cancelled; #Completed; #InProgress; #Invoiced; #Scheduled};
+    technicianId : Nat;
+    title : Text;
+    totalCost : Float
+  };
+actor ({
+  in var activityLogs : Map__222667396<Nat, ActivityLog__19743674>;
+  in var customerEquipments :
+    Map__222667396<Nat, CustomerEquipment__591613477>;
+  in var customers : Map__222667396<Nat, Customer__907476791>;
+  in var gasketInfos : Map__222667396<Nat, GasketInfo__472137001>;
+  in var items : Map__222667396<Nat, Item__925164080>;
+  in var locations : Map__222667396<Nat, Location__653099815>;
+  in var maintenanceRecords :
+    Map__222667396<Nat, MaintenanceRecord__1071929309>;
+  in multiUserState : MultiUserState__784036298;
+  in var nextActivityLogId : Nat;
+  in var nextCustomerEquipmentId : Nat;
+  in var nextCustomerId : Nat;
+  in var nextItemId : Nat;
+  in var nextLocationId : Nat;
+  in var nextMaintenanceRecordId : Nat;
+  in var nextPurchaseOrderId : Nat;
+  in var nextReorderAlertId : Nat;
+  in var nextServiceKitId : Nat;
+  in var nextSupplierId : Nat;
+  in var nextTechnicianId : Nat;
+  in var nextTransactionId : Nat;
+  in var nextWorkOrderId : Nat;
+  in var purchaseOrders : Map__222667396<Nat, PurchaseOrder__625462676>;
+  in var reorderAlerts : Map__222667396<Nat, ReorderAlert__123161961>;
+  in var seedDataSeeded : Bool;
+  in var serviceKits : Map__222667396<Nat, ServiceKit__7545242>;
+  in var stockLevels : Map__222667396<Nat, StockLevel__687884146>;
+  in var suppliers : Map__222667396<Nat, Supplier__446164726>;
+  in var technicians : Map__222667396<Nat, Technician__500247538>;
+  in var transactions : Map__222667396<Nat, Transaction__381777412>;
+  in var userProfiles : Map__222667396<Principal, UserProfile__315128327>;
+  in var workOrders : Map__222667396<Nat, WorkOrder__638090170>
+}, {
+  stable var activityLogs :
+    {
+      var root : Node__1000929467<Nat, ActivityLog__439802922>;
+      var size : Nat__1040412405
+    };
+  stable var customerEquipments :
+    {
+      var root : Node__1000929467<Nat, CustomerEquipment__795553484>;
+      var size : Nat__1040412405
+    };
+  stable var customers :
+    {
+      var root : Node__1000929467<Nat, Customer__263943254>;
+      var size : Nat__1040412405
+    };
+  stable var gasketInfos :
+    {
+      var root : Node__1000929467<Nat, GasketInfo__328917302>;
+      var size : Nat__1040412405
+    };
+  stable var items :
+    {
+      var root : Node__1000929467<Nat, Item__751671943>;
+      var size : Nat__1040412405
+    };
+  stable var locations :
+    {
+      var root : Node__1000929467<Nat, Location__31265466>;
+      var size : Nat__1040412405
+    };
+  stable var maintenanceRecords :
+    {
+      var root : Node__1000929467<Nat, MaintenanceRecord__379710549>;
+      var size : Nat__1040412405
+    };
+  stable multiUserState :
+    {
+      var adminAssigned : Bool;
+      approvalStatus : Map__222667396<Principal, ApprovalStatus__1030066916>;
+      userRoles : Map__222667396<Principal, UserRole__465239019>
+    };
+  stable var nextActivityLogId : Nat;
+  stable var nextCustomerEquipmentId : Nat;
+  stable var nextCustomerId : Nat;
+  stable var nextItemId : Nat;
+  stable var nextLocationId : Nat;
+  stable var nextMaintenanceRecordId : Nat;
+  stable var nextPurchaseOrderId : Nat;
+  stable var nextReorderAlertId : Nat;
+  stable var nextServiceKitId : Nat;
+  stable var nextSupplierId : Nat;
+  stable var nextTechnicianId : Nat;
+  stable var nextTransactionId : Nat;
+  stable var nextWorkOrderId : Nat;
+  stable var purchaseOrders :
+    {
+      var root : Node__1000929467<Nat, PurchaseOrder__375015127>;
+      var size : Nat__1040412405
+    };
+  stable var reorderAlerts :
+    {
+      var root : Node__1000929467<Nat, ReorderAlert__383694723>;
+      var size : Nat__1040412405
+    };
+  stable var seedDataSeeded : Bool;
+  stable var serviceKits :
+    {
+      var root : Node__1000929467<Nat, ServiceKit__404755546>;
+      var size : Nat__1040412405
+    };
+  stable var stockLevels :
+    {
+      var root : Node__1000929467<Nat, StockLevel__1013768411>;
+      var size : Nat__1040412405
+    };
+  stable var suppliers :
+    {
+      var root : Node__1000929467<Nat, Supplier__62548867>;
+      var size : Nat__1040412405
+    };
+  stable var technicians :
+    {
+      var root : Node__1000929467<Nat, Technician__559818750>;
+      var size : Nat__1040412405
+    };
+  stable var transactions :
+    {
+      var root : Node__1000929467<Nat, Transaction__865268250>;
+      var size : Nat__1040412405
+    };
+  stable var userProfiles :
+    {
+      var root : Node__1000929467<Principal, UserProfile__491224006>;
+      var size : Nat__1040412405
+    };
+  stable var workOrders :
+    {
+      var root : Node__1000929467<Nat, WorkOrder__288220227>;
+      var size : Nat__1040412405
+    }
+});

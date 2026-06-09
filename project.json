@@ -1,0 +1,30 @@
+{
+  "overview": "A comprehensive HVAC Inventory Management System with multi-location tracking, purchase orders, work orders, customer CRM, maintenance scheduling, barcode scanning, and rich analytics.",
+  "features": [
+    "Dashboard with KPIs and charts",
+    "Multi-location inventory tracking",
+    "Parts catalog with variants and barcodes",
+    "Supplier and purchase order management",
+    "Work orders with job costing",
+    "Customer CRM and equipment history",
+    "Transaction audit trail",
+    "Low stock alerts and reorder automation",
+    "Maintenance and warranty tracking",
+    "Service kits and BOM management",
+    "Reporting and analytics with PDF/Excel export",
+    "Role-based user management",
+    "Mobile-responsive design",
+    "Comprehensive mock data"
+  ],
+  "category": "productivity",
+  "tags": [
+    "inventory",
+    "hvac",
+    "management",
+    "analytics",
+    "crm",
+    "maintenance",
+    "mobile"
+  ],
+  "last_updated": "2026-06-09T10:31:18.761Z"
+}

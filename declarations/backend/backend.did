@@ -1,0 +1,111 @@
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = record {name: text;};
+type UserApprovalInfo = 
+ record {
+   "principal": principal;
+   status: ApprovalStatus;
+ };
+type StockLevel = 
+ record {
+   itemId: nat;
+   quantity: nat;
+ };
+type StagingReport = 
+ record {
+   items: vec record {
+                text;
+                nat;
+              };
+   locationId: nat;
+   locationName: text;
+ };
+type OrderItem = 
+ record {
+   itemId: nat;
+   name: text;
+   quantity: nat;
+ };
+type Location = 
+ record {
+   active: bool;
+   beltRequirements: vec record {
+                           text;
+                           nat;
+                         };
+   completed: bool;
+   filterRequirements: vec record {
+                             text;
+                             nat;
+                           };
+   id: nat;
+   name: text;
+ };
+type Item = 
+ record {
+   description: text;
+   id: nat;
+   name: text;
+   unit: text;
+ };
+type CustomReport = 
+ record {
+   combinedTotals: vec record {
+                         text;
+                         nat;
+                       };
+   selectedLocations: vec Location;
+ };
+type ApprovalStatus = 
+ variant {
+   approved;
+   pending;
+   rejected;
+ };
+service : {
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createItem: (name: text, description: text, unit: text) -> ();
+  createLocation: (name: text, beltRequirements: vec record {
+                                                       text;
+                                                       nat;
+                                                     }, filterRequirements:
+   vec record {
+         text;
+         nat;
+       }) -> ();
+  deleteItem: (id: nat) -> ();
+  deleteLocation: (id: nat) -> ();
+  generateCustomReport: (selectedLocationIds: vec nat) -> (CustomReport);
+  generateOrder: () -> (vec OrderItem);
+  generateStagingReport: () -> (vec StagingReport);
+  getAllItems: () -> (vec Item) query;
+  getAllLocations: () -> (vec Location) query;
+  getAllStockLevels: () -> (vec StockLevel) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getStockLevelByItemId: (itemId: nat) -> (opt StockLevel) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  initializeAccessControl: () -> ();
+  isCallerAdmin: () -> (bool) query;
+  isCallerApproved: () -> (bool) query;
+  listApprovals: () -> (vec UserApprovalInfo) query;
+  requestApproval: () -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  setApproval: (user: principal, status: ApprovalStatus) -> ();
+  updateItem: (id: nat, name: text, description: text, unit: text) -> ();
+  updateLocation: (id: nat, name: text, beltRequirements:
+   vec record {
+         text;
+         nat;
+       }, filterRequirements: vec record {
+                                    text;
+                                    nat;
+                                  }) -> ();
+  updateLocationActiveStatus: (id: nat, active: bool) -> ();
+  updateLocationCompletionStatus: (id: nat, completed: bool) -> ();
+  updateStockLevel: (itemId: nat, quantity: nat) -> ();
+}

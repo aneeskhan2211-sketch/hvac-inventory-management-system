@@ -1,0 +1,406 @@
+type WorkOrderPart = 
+ record {
+   partId: nat;
+   quantity: nat;
+   totalCost: float64;
+   unitCost: float64;
+ };
+type WorkOrder = 
+ record {
+   assignedParts: vec WorkOrderPart;
+   completedDate: opt int;
+   customerId: nat;
+   description: text;
+   id: nat;
+   laborHours: float64;
+   locationId: nat;
+   notes: opt text;
+   priority: variant {
+               Emergency;
+               High;
+               Low;
+               Medium;
+             };
+   scheduledDate: int;
+   status: variant {
+             Cancelled;
+             Completed;
+             InProgress;
+             Invoiced;
+             Scheduled;
+           };
+   technicianId: nat;
+   title: text;
+   totalCost: float64;
+ };
+type UserProfile = record {name: text;};
+type Transaction = 
+ record {
+   fromLocationId: opt nat;
+   id: nat;
+   itemId: nat;
+   notes: opt text;
+   quantity: nat;
+   reason: text;
+   relatedOrderId: opt nat;
+   timestamp: int;
+   toLocationId: opt nat;
+   transactionType:
+    variant {
+      Adjustment;
+      Damaged;
+      Issued;
+      Loss;
+      Receipt;
+      Returned;
+      Transfer;
+    };
+   userId: principal;
+ };
+type Technician = 
+ record {
+   assignedTruckId: opt nat;
+   email: text;
+   id: nat;
+   isActive: bool;
+   name: text;
+   phone: text;
+   role: text;
+   skills: vec text;
+ };
+type Supplier = 
+ record {
+   address: text;
+   contactName: text;
+   email: text;
+   id: nat;
+   isActive: bool;
+   leadTimeDays: nat;
+   name: text;
+   paymentTerms: text;
+   phone: text;
+   rating: float64;
+   website: opt text;
+ };
+type StockLevel = 
+ record {
+   beginningInventory: opt nat;
+   bin: opt text;
+   currentStock: opt nat;
+   itemId: nat;
+   lastUpdated: int;
+   locationId: nat;
+   quantity: nat;
+   receive1: opt nat;
+   receive2: opt nat;
+   receive3: opt nat;
+   zone: opt text;
+ };
+type StagingReport = 
+ record {
+   items: vec record {
+                text;
+                nat;
+              };
+   locationId: nat;
+   locationName: text;
+ };
+type ServiceKitPart = 
+ record {
+   partId: nat;
+   quantity: nat;
+ };
+type ServiceKit = 
+ record {
+   category: text;
+   description: text;
+   estimatedLaborHours: float64;
+   id: nat;
+   name: text;
+   parts: vec ServiceKitPart;
+   totalCost: float64;
+ };
+type ReorderAlert = 
+ record {
+   createdDate: int;
+   currentStock: nat;
+   id: nat;
+   itemId: nat;
+   locationId: nat;
+   reorderPoint: nat;
+   status: variant {
+             Acknowledged;
+             Active;
+             Ordered;
+             Resolved;
+           };
+   suggestedQuantity: nat;
+ };
+type PurchaseOrderItem = 
+ record {
+   itemId: nat;
+   notes: opt text;
+   quantity: nat;
+   receivedQuantity: nat;
+   unitCost: float64;
+ };
+type PurchaseOrder = 
+ record {
+   createdDate: int;
+   expectedDate: opt int;
+   id: nat;
+   items: vec PurchaseOrderItem;
+   notes: opt text;
+   receivedDate: opt int;
+   status:
+    variant {
+      Acknowledged;
+      Closed;
+      Draft;
+      PartiallyReceived;
+      Received;
+      Sent;
+    };
+   supplierId: nat;
+   totalCost: float64;
+ };
+type OrderItem = 
+ record {
+   itemId: nat;
+   name: text;
+   quantity: nat;
+ };
+type MaintenanceRecord = 
+ record {
+   completedDate: opt int;
+   cost: float64;
+   equipmentId: nat;
+   equipmentType: text;
+   id: nat;
+   notes: opt text;
+   partsUsed: vec WorkOrderPart;
+   scheduledDate: int;
+   status: variant {
+             Cancelled;
+             Completed;
+             InProgress;
+             Overdue;
+             Scheduled;
+           };
+   technicianId: nat;
+   workPerformed: text;
+ };
+type Location = 
+ record {
+   active: bool;
+   address: opt text;
+   beltRequirements: vec record {
+                           text;
+                           nat;
+                         };
+   completed: bool;
+   filterRequirements: vec record {
+                             text;
+                             nat;
+                           };
+   id: nat;
+   isActive: bool;
+   locationType: variant {
+                   JobSite;
+                   SecondaryStorage;
+                   ServiceTruck;
+                   Warehouse;
+                 };
+   managerId: opt nat;
+   name: text;
+   zones: vec text;
+ };
+type Item = 
+ record {
+   barcode: opt text;
+   category: text;
+   cost: float64;
+   customFields: vec record {
+                       text;
+                       text;
+                     };
+   description: text;
+   id: nat;
+   isActive: bool;
+   maxStock: nat;
+   name: text;
+   qrCode: opt text;
+   reorderPoint: nat;
+   sellPrice: float64;
+   sku: text;
+   subcategory: text;
+   supplierIds: vec nat;
+   unit: text;
+   unitOfMeasure: text;
+   variantOf: opt nat;
+ };
+type GasketInfo = 
+ record {
+   cooler: text;
+   freezer: text;
+   fryFreezer: text;
+   glassFreezer: text;
+   grillBox: text;
+   insideDress: text;
+   locationId: nat;
+   outsideDressTable: text;
+ };
+type CustomerEquipment = 
+ record {
+   brand: text;
+   customerId: nat;
+   equipmentType: text;
+   id: nat;
+   installDate: opt int;
+   location: text;
+   model: text;
+   purchaseDate: opt int;
+   serialNumber: text;
+   warrantyExpiry: opt int;
+ };
+type Customer = 
+ record {
+   address: text;
+   city: text;
+   email: text;
+   equipmentList: vec nat;
+   id: nat;
+   name: text;
+   notes: opt text;
+   phone: text;
+   serviceHistory: vec nat;
+   state: text;
+   zip: text;
+ };
+type CustomReport = 
+ record {
+   combinedTotals: vec record {
+                         text;
+                         nat;
+                       };
+   selectedLocations: vec Location;
+ };
+type ActivityLog = 
+ record {
+   action: text;
+   details: opt text;
+   entityId: nat;
+   entityType: text;
+   id: nat;
+   timestamp: int;
+   userId: principal;
+ };
+service : {
+  createCustomer: (c: Customer) -> (nat);
+  createCustomerEquipment: (eq: CustomerEquipment) -> (nat);
+  createItem: (name: text, description: text, unit: text) -> ();
+  createLocation: (name: text, beltRequirements: vec record {
+                                                       text;
+                                                       nat;
+                                                     }, filterRequirements:
+   vec record {
+         text;
+         nat;
+       }) -> ();
+  createMaintenanceRecord: (rec: MaintenanceRecord) -> (nat);
+  createPurchaseOrder: (po: PurchaseOrder) -> (nat);
+  createReorderAlert: (alert: ReorderAlert) -> (nat);
+  createServiceKit: (sk: ServiceKit) -> (nat);
+  createSupplier: (s: Supplier) -> (nat);
+  createTechnician: (tech: Technician) -> (nat);
+  createTransaction: (txn: Transaction) -> (nat);
+  createWorkOrder: (wo: WorkOrder) -> (nat);
+  deleteCustomer: (id: nat) -> ();
+  deleteCustomerEquipment: (id: nat) -> ();
+  deleteGasketInfo: (locationId: nat) -> ();
+  deleteItem: (id: nat) -> ();
+  deleteLocation: (id: nat) -> ();
+  deletePurchaseOrder: (id: nat) -> ();
+  deleteServiceKit: (id: nat) -> ();
+  deleteSupplier: (id: nat) -> ();
+  deleteTechnician: (id: nat) -> ();
+  deleteUser: (user: principal) -> ();
+  deleteWorkOrder: (id: nat) -> ();
+  generateCustomReport: (selectedLocationIds: vec nat) -> (CustomReport);
+  generateOrder: () -> (vec OrderItem);
+  generateStagingReport: () -> (vec StagingReport);
+  getActiveReorderAlerts: () -> (vec ReorderAlert) query;
+  getAllActivityLogs: () -> (vec ActivityLog) query;
+  getAllCustomerEquipments: () -> (vec CustomerEquipment) query;
+  getAllCustomers: () -> (vec Customer) query;
+  getAllGasketInfos: () -> (vec GasketInfo) query;
+  getAllItems: () -> (vec Item) query;
+  getAllLocations: () -> (vec Location) query;
+  getAllMaintenanceRecords: () -> (vec MaintenanceRecord) query;
+  getAllPurchaseOrders: () -> (vec PurchaseOrder) query;
+  getAllReorderAlerts: () -> (vec ReorderAlert) query;
+  getAllServiceKits: () -> (vec ServiceKit) query;
+  getAllStockLevels: () -> (vec StockLevel) query;
+  getAllSuppliers: () -> (vec Supplier) query;
+  getAllTechnicians: () -> (vec Technician) query;
+  getAllTransactions: () -> (vec Transaction) query;
+  getAllWorkOrders: () -> (vec WorkOrder) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCustomer: (id: nat) -> (opt Customer) query;
+  getCustomerEquipment: (id: nat) -> (opt CustomerEquipment) query;
+  getCustomerEquipmentByCustomer: (customerId: nat) ->
+   (vec CustomerEquipment) query;
+  getLocationGasketInfo: (locationId: nat) -> (opt GasketInfo) query;
+  getMaintenanceRecord: (id: nat) -> (opt MaintenanceRecord) query;
+  getMaintenanceRecordsByEquipment: (equipmentId: nat) ->
+   (vec MaintenanceRecord) query;
+  getPurchaseOrder: (id: nat) -> (opt PurchaseOrder) query;
+  getPurchaseOrdersBySupplier: (supplierId: nat) -> (vec PurchaseOrder) query;
+  getServiceKit: (id: nat) -> (opt ServiceKit) query;
+  getStockLevelByItemId: (itemId: nat) -> (opt StockLevel) query;
+  getSupplier: (id: nat) -> (opt Supplier) query;
+  getTechnician: (id: nat) -> (opt Technician) query;
+  getTransaction: (id: nat) -> (opt Transaction) query;
+  getTransactionsByItem: (itemId: nat) -> (vec Transaction) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  getWorkOrder: (id: nat) -> (opt WorkOrder) query;
+  getWorkOrdersByCustomer: (customerId: nat) -> (vec WorkOrder) query;
+  getWorkOrdersByTechnician: (technicianId: nat) -> (vec WorkOrder) query;
+  listUsers: () -> (vec principal) query;
+  logActivity: (action: text, entityType: text, entityId: nat, details:
+   opt text) -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  saveLocationGasketInfo: (locationId: nat, gasketInfo: GasketInfo) -> ();
+  searchGasketLocations: (searchTerm: text) -> (vec Location) query;
+  searchLocations: (searchTerm: text) -> (vec Location) query;
+  seedAllData: () -> ();
+  updateCustomer: (id: nat, c: Customer) -> ();
+  updateCustomerEquipment: (id: nat, eq: CustomerEquipment) -> ();
+  updateItem: (id: nat, name: text, description: text, unit: text) -> ();
+  updateLocation: (id: nat, name: text, beltRequirements:
+   vec record {
+         text;
+         nat;
+       }, filterRequirements: vec record {
+                                    text;
+                                    nat;
+                                  }) -> ();
+  updateLocationActiveStatus: (id: nat, active: bool) -> ();
+  updateLocationCompletionStatus: (id: nat, completed: bool) -> ();
+  updateMaintenanceRecord: (id: nat, rec: MaintenanceRecord) -> ();
+  updatePurchaseOrder: (id: nat, po: PurchaseOrder) -> ();
+  updateReorderAlertStatus: (id: nat, status:
+   variant {
+     Acknowledged;
+     Active;
+     Ordered;
+     Resolved;
+   }) -> ();
+  updateServiceKit: (id: nat, sk: ServiceKit) -> ();
+  updateStockLevel: (itemId: nat, beginningInventory: opt nat, receive1:
+   opt nat, receive2: opt nat, receive3: opt nat, currentStock: opt nat) ->
+   ();
+  updateSupplier: (id: nat, s: Supplier) -> ();
+  updateTechnician: (id: nat, tech: Technician) -> ();
+  updateWorkOrder: (id: nat, wo: WorkOrder) -> ();
+}
